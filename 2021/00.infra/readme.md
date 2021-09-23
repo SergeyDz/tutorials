@@ -8,7 +8,13 @@ See https://github.com/SergeyDz/terraform-infrastructure-sample/blob/main/vms/do
 0.2. Hyper-V needs to be enabled
 ```
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-choco install kind k9s kubernetes-helm -y
+choco install kind minikube k9s kubernetes-helm -y
+```
+
+*If You are using minikube - needs to create new cluster with extra resources*
+```
+minikube start --memory 8192 --cpus 4
+minikube tunel
 ```
 
 ## 1. Deploy argo-cd to orchestrate the cluster
@@ -21,14 +27,15 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/SergeyDz/argocd-edu
 
 ## 2. Expose port and user login
 ```
-kubectl port-forward svc/argocd-server -n argocd 8080:443
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
 *Windows user ? Not a problem!*
 ```
 $p = kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}"
 [Text.Encoding]::Utf8.GetString([Convert]::FromBase64String($p))
+kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
 ## 3. Login to Argo CD UI
