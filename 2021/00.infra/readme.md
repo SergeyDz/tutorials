@@ -47,3 +47,8 @@ Password: use output from 2
 ```
 kubectl apply -n argocd -f https://raw.githubusercontent.com/SergeyDz/argocd-education/main/argocd-applications-root.yaml
 ```
+
+## 5. Accessing cluster components
+```
+kubectl port-forward svc/prometheus-grafana -n monitoring 8081:80
+```
