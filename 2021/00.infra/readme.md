@@ -8,7 +8,7 @@ See https://github.com/SergeyDz/terraform-infrastructure-sample/blob/main/vms/do
 0.2. Hyper-V needs to be enabled
 ```
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-choco install kind minikube k9s kubernetes-helm -y
+choco install kind minikube k9s kubernetes-helm octant -y
 ```
 
 *If You are using minikube - needs to create new cluster with extra resources*
