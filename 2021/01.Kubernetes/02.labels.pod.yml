@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: consul
+  labels:
+    environment: dev
+    platform: aks
+    user: sergeyd
+spec:
+  containers:
+    - name: consul
+      image: "consul:latest"
+      ports:
+      - containerPort: 8500
+      resources:
+        limits:
+          cpu: 0.5
+  nodeSelector:
+    "kubernetes.io/os": windows
