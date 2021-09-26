@@ -7,6 +7,8 @@ metadata:
     environment: dev
     platform: aks
     user: sergeyd
+  annotations:
+    readmore: "https://www.consul.io"
 spec:
   containers:
     - name: consul
