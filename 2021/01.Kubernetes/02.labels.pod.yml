@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   name: consul
   labels:
+    app: consul
     environment: dev
     platform: aks
     user: sergeyd
