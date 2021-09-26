@@ -13,7 +13,7 @@ choco install kind minikube k9s kubernetes-helm octant -y
 
 *If You are using minikube - needs to create new cluster with extra resources*
 ```
-minikube start --memory 8192 --cpus 4
+minikube start --memory 4096 --cpus 4 --nodes 2
 minikube tunnel
 ```
 
